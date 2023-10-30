@@ -1,0 +1,1 @@
+underscores_in_headers on; #header中携带的参数有带下划线的，如：jwt_access_token:xxxx,这个值默认off
