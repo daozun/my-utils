@@ -134,3 +134,51 @@ const listToTree = (list, parentId = null) => {
 
     return tree;
 }
+
+// const tree = [
+//     {
+//         id: 1,
+//         name: '张三',
+//         parentId: null,
+//         children: [
+//             {
+//                 id: 2,
+//                 name: '李四',
+//                 parentId: 1,
+//                 children: [
+//                     {
+//                         id: 4,
+//                         name: '王五',
+//                         parentId: 2
+//                     }
+//                 ]
+//             }
+//         ]
+//     },
+//     {
+//         id: 3,
+//         name: '赵六',
+//         parentId: null,
+//         children: [
+//             {
+//                 id: 5,
+//                 name: '钱七',
+//                 parentId: 3
+//             }
+//         ]
+//     }
+// ]
+
+// 树形结构转成平面结构
+const treeToList = (tree, list = []) => {
+
+    for (const item of tree) {
+        list.push(item);
+
+        if(item.children && item.children.length > 0) {
+            treeToList(item.children, list)
+        }
+    }
+
+    return list;
+}
