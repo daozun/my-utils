@@ -63,3 +63,74 @@ function convertToFormData(data) {
 
   return formData;
 }
+
+// let list = [
+//     {
+//         id: 0,
+//         name: 'zhangsan',
+//         parentId: null
+//     },
+//     {
+//         id: 1,
+//         name: '张三',
+//         parentId: 0
+//     },
+//     {
+//         id: 2,
+//         name: '李四',
+//         parentId: 0
+//     },
+//     {
+//         id: 3,
+//         name: '王五',
+//         parentId: 1
+//     },
+//     {
+//         id: 4,
+//         name: '赵六',
+//         parentId: 2
+//     },
+//     {
+//         id: 5,
+//         name: '孙七',
+//         parentId: 2
+//     },
+//     {
+//         id: 6,
+//         name: '李华',
+//         parentId: 3
+//     },
+//     {
+//         id: 7,
+//         name: '小明',
+//         parentId: 3
+//     },
+//     {
+//         id: 8,
+//         name: '小红',
+//         parentId: 3
+//     },
+//     {
+//         id: 9,
+//         name: '小华',
+//         parentId: 4
+//     },
+// ]
+
+// 平面结构转成树形结构
+const listToTree = (list, parentId = null) => {
+    let tree = []
+    for (const item of list) {
+        if(item.parentId === parentId) {
+            const node = {
+                id: item.id,
+                name: item.name,
+                children: listToTree(list, item.id)
+            }
+
+            tree.push(node)
+        }
+    }
+
+    return tree;
+}
